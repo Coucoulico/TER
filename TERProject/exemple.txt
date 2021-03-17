@@ -1,0 +1,25 @@
+
+//
+//  Exemple de modèle à simuler
+//
+
+
+vesicule = 500;       // 500 nanomètres de diamètre
+
+espece E,Es, s, p;   // espèces biochimiques utilisées dans le modèle.
+taille (E) = 8;       // 8 nanomètres de diamètre.
+taille (Es) = 8;      // 8 nanomètres de diamètre.
+taille (s) = 2;       // 2 nanomètres de diamètre.
+taille (p) = 2;       // 2 nanomètres de diamètre.
+
+vitesse (E) = 0.1;    // faible vitesse de diffusion.
+vitesse (Es) = 0.1;
+
+init (E) = 50;        // 50 exemplaires de E au début.
+init (s) = 1000;      // 1000 exemplaires de s au début.
+
+// réactions.
+
+E + s -> Es    [0.5];
+Es    -> E + s [0.01];
+Es    -> E + p [0.005];
