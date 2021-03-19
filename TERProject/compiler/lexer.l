@@ -65,5 +65,6 @@ comment		\/\/.*
 
 {ident}         {  yylval.texte = strdup(yytext); return(IDENT);  }
 
+.				{}
 
 %%

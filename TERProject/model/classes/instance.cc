@@ -26,10 +26,8 @@ void instance::addEspece(espece e){
   }
 
 void instance::addReaction(const reaction& r){
-  std::cout <<"add react"<<std::endl;
 	if(find(reactions.begin(),reactions.end(),r) == reactions.end() ){
   		reactions.push_back(r);
-      std::cout <<"bien ajouté";
   	}
   	else{
   		std::cout << r << "recation  deja declaré";
@@ -38,10 +36,17 @@ void instance::addReaction(const reaction& r){
 }
 
   espece* instance::getEspece(std::string id){
-    for(espece& e:especes){
-      if(e.id==id) return &e;
+    espece* e=nullptr;
+    for(espece& es:especes){
+      if(es.id==id) {
+        e=&es;
+        break;
+      }
     }
-    assert("Espece Non declaré\n" );
+    std::string msg="Espece Non declaré : "+id;
+    if(e==nullptr) throw std::runtime_error(msg);
+    return e;
+
     
   }
 
@@ -78,6 +83,15 @@ std::ostream& operator<<(std::ostream& os, const instance& i)
     }
 
     return os;
+}
+
+
+void instance::affichage() const{
+
+  for(const espece &e:especes){
+    std::cout << e.id << " : "<<e.nb << "  ";
+  }
+  std::cout << std::endl;
 }
 
 

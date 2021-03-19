@@ -6,18 +6,22 @@ class solver
 {
 public:
 	solver(instance i);
+	virtual ~solver()=default;
+	virtual void solve(int time_max)=0;
 
-	virtual void solve()=0;
-
+	static float rand_uniforme();
 	instance i;
+	float alpha;
 	
 };
 
 
-class essolver:public solver
+class pcsolver:public solver
 {
 public:
-	essolver();
+	pcsolver(instance i);
+
+	virtual void solve(int time_max) override;
 	
 };
 

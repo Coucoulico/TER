@@ -5,6 +5,7 @@
 #include "model/headers/reaction.h"
 
 #include "model/headers/instance.h"
+#include "model/headers/solver.h"
 extern "C" int yyparse();
 extern "C" FILE *yyin;
 extern instance inst;
@@ -28,6 +29,8 @@ int main(int argc, char *argv[]) {
     } while (!feof(yyin));
 
     std::cout << inst <<std::endl;
+    pcsolver s(inst);
+    s.solve(1000);
    
 
 

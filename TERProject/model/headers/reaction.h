@@ -16,6 +16,10 @@ public:
 
 	void setProd(espece* p,int to);
 
+	float collision(float alpha,float vol);
+
+	void apply(int time);
+
 	int type;
 	float proba;
 

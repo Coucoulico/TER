@@ -1449,7 +1449,7 @@ yyreduce:
   case 17:
 #line 122 "compiler/parser.y"
     {
-    inst.setNb((yyvsp[(3) - (7)].texte),(yyvsp[(6) - (7)].ival));
+                inst.setNb((yyvsp[(3) - (7)].texte),(yyvsp[(6) - (7)].ival));
 ;}
     break;
 
@@ -1487,7 +1487,7 @@ yyreduce:
                 espece* p1=inst.getEspece((yyvsp[(3) - (9)].texte));
                 r.setProd(p1,1);
                 espece* p2=inst.getEspece((yyvsp[(5) - (9)].texte));
-                r.setProd(p1,2);
+                r.setProd(p2,2);
                 inst.addReaction(r);
                 
 ;}

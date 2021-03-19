@@ -3,7 +3,7 @@
 
 #include <iostream>
 #include <vector>
-
+#include "reaction.h"
 #include "espece.h"
 #include "vesicule.h"
 
@@ -25,6 +25,8 @@ public:
     void setVitesse(const std::string& id,const float& v);
 
     friend std::ostream& operator<<(std::ostream& os, const instance& i);
+
+    void affichage() const;
     
     vesicule vesi;
 	std::vector<espece> especes;

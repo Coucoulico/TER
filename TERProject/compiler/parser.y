@@ -120,7 +120,7 @@ Vitesse:        VITESSE PO IDENT PF ASSIGN FLOAT PV{
 
 
 Init:           INIT PO IDENT PF ASSIGN ENTIER PV{
-    inst.setNb($3,$6);
+                inst.setNb($3,$6);
 } 
     ;
 
@@ -165,7 +165,7 @@ React2:         IDENT IMPLIZE IDENT PLUS IDENT CO FLOAT CF PV {
                 espece* p1=inst.getEspece($3);
                 r.setProd(p1,1);
                 espece* p2=inst.getEspece($5);
-                r.setProd(p1,2);
+                r.setProd(p2,2);
                 inst.addReaction(r);
                 
 }  

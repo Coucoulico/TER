@@ -3,7 +3,7 @@
 
 
 
-espece::espece(std::string e):id(e){};
+espece::espece(std::string e):id(e),taille(0),vitesse(0.1),nb(0){};
 std::ostream& operator<<(std::ostream& os, const espece& e)
 {
     // write obj to stream
