@@ -17,8 +17,6 @@ public:
 
     void addReaction(const reaction& r);
 
-    void addReactif(reaction &r,const espece &e)const;
-    void addProduit(reaction &r,const espece &p)const;
 
     espece* getEspece(std::string id);
 

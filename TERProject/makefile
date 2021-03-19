@@ -1,6 +1,6 @@
 
 prog:lexer.cc parser.cc
-	g++ -std=c++11 compiler/lexer.cc compiler/parser.cc model/classes/*.cc  main.cc   -o analyser
+	g++ -std=c++11 -mmacosx-version-min=10.11 compiler/lexer.cc compiler/parser.cc model/classes/*.cc  main.cc   -o analyser
 
 
 parser.cc:compiler/parser.y

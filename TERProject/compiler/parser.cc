@@ -440,7 +440,7 @@ static const yytype_uint8 yyprhs[] =
 {
        0,     0,     3,     8,    10,    13,    16,    19,    23,    25,
       27,    30,    35,    37,    39,    41,    49,    57,    65,    67,
-      70,    72,    74,    76,    78,    80,    90,    98,   108
+      70,    72,    74,    76,    78,    80,    88,    98,   108
 };
 
 /* YYRHS -- A `-1'-separated list of the rules' RHS.  */
@@ -454,7 +454,7 @@ static const yytype_int8 yyrhs[] =
       10,    14,    11,     7,     4,     8,    -1,    19,    10,    14,
       11,     7,     3,     8,    -1,    33,    -1,    33,    32,    -1,
       34,    -1,    35,    -1,    36,    -1,    37,    -1,    38,    -1,
-      14,     5,    14,     6,    14,    12,     4,    13,     8,    -1,
+      14,     6,    14,    12,     4,    13,     8,    -1,    14,     5,
       14,     6,    14,    12,     4,    13,     8,    -1,    14,     6,
       14,     5,    14,    12,     4,    13,     8,    -1,    14,     5,
       14,     6,    14,     5,    14,    12,     4,    13,     8,    -1
@@ -463,9 +463,9 @@ static const yytype_int8 yyrhs[] =
 /* YYRLINE[YYN] -- source line where rule number YYN was defined.  */
 static const yytype_uint8 yyrline[] =
 {
-       0,    66,    66,    69,    70,    73,    77,    85,    89,    92,
-      93,    96,   103,   104,   105,   108,   114,   120,   125,   126,
-     129,   131,   132,   133,   134,   136,   145,   153,   162
+       0,    68,    68,    71,    72,    75,    79,    87,    91,    94,
+      95,    98,   105,   106,   107,   110,   116,   122,   127,   128,
+     131,   133,   134,   135,   136,   140,   150,   161,   176
 };
 #endif
 
@@ -478,8 +478,8 @@ static const char *const yytname[] =
   "ASSIGN", "PV", "V", "PO", "PF", "CO", "CF", "IDENT", "VESICULE",
   "ESPECE", "TAILLE", "VITESSE", "INIT", "$accept", "Prog", "Lespece",
   "Espece", "Lident", "Suite", "Lrest", "Vesicule", "Reste", "Taille",
-  "Vitesse", "Init", "Lreact", "React", "Reacttype", "React1", "React2",
-  "React3", "React4", 0
+  "Vitesse", "Init", "Lreact", "React", "Reacttype", "React0", "React1",
+  "React2", "React3", 0
 };
 #endif
 
@@ -506,7 +506,7 @@ static const yytype_uint8 yyr2[] =
 {
        0,     2,     4,     1,     2,     2,     2,     3,     1,     1,
        2,     4,     1,     1,     1,     7,     7,     7,     1,     2,
-       1,     1,     1,     1,     1,     9,     7,     9,    11
+       1,     1,     1,     1,     1,     7,     9,     9,    11
 };
 
 /* YYDEFACT[STATE-NAME] -- Default rule to reduce with in state
@@ -521,7 +521,7 @@ static const yytype_uint8 yydefact[] =
        0,     0,     0,    19,     7,     0,     0,     0,     0,     0,
        0,     0,     0,     0,     0,     0,     0,     0,     0,     0,
        0,     0,    15,    16,    17,     0,     0,     0,     0,     0,
-       0,     0,    26,     0,     0,     0,     0,    25,    27,     0,
+       0,     0,    25,     0,     0,     0,     0,    26,    27,     0,
       28
 };
 
@@ -1409,7 +1409,7 @@ yyreduce:
   switch (yyn)
     {
         case 6:
-#line 77 "compiler/parser.y"
+#line 79 "compiler/parser.y"
     {
                               espece e((yyvsp[(1) - (2)].texte));
                               inst.addEspece(e);  
@@ -1417,7 +1417,7 @@ yyreduce:
     break;
 
   case 7:
-#line 85 "compiler/parser.y"
+#line 87 "compiler/parser.y"
     {
                               espece e((yyvsp[(2) - (3)].texte));
                               inst.addEspece(e);  
@@ -1425,7 +1425,7 @@ yyreduce:
     break;
 
   case 11:
-#line 96 "compiler/parser.y"
+#line 98 "compiler/parser.y"
     {
                  vesicule v((yyvsp[(3) - (4)].ival));
                  inst.setVesicule(v);
@@ -1433,73 +1433,87 @@ yyreduce:
     break;
 
   case 15:
-#line 108 "compiler/parser.y"
+#line 110 "compiler/parser.y"
     {
                 inst.setTaille((yyvsp[(3) - (7)].texte),(yyvsp[(6) - (7)].ival));
                 ;}
     break;
 
   case 16:
-#line 114 "compiler/parser.y"
+#line 116 "compiler/parser.y"
     {
                         inst.setVitesse((yyvsp[(3) - (7)].texte),(yyvsp[(6) - (7)].fval));
                         ;}
     break;
 
   case 17:
-#line 120 "compiler/parser.y"
+#line 122 "compiler/parser.y"
     {
     inst.setNb((yyvsp[(3) - (7)].texte),(yyvsp[(6) - (7)].ival));
 ;}
     break;
 
   case 25:
-#line 136 "compiler/parser.y"
+#line 140 "compiler/parser.y"
     {
-                reaction r((yyvsp[(7) - (9)].fval));
-                r.s1=inst.getEspece((yyvsp[(1) - (9)].texte));
-                r.s2=inst.getEspece((yyvsp[(3) - (9)].texte));
-                r.setp1(inst.getEspece((yyvsp[(5) - (9)].texte)));
+                reaction r((yyvsp[(5) - (7)].fval),0);
+                r.S1 = inst.getEspece((yyvsp[(1) - (7)].texte));
+                r.setProd(inst.getEspece((yyvsp[(3) - (7)].texte)),1);
                 inst.addReaction(r);
+
+                
 ;}
     break;
 
   case 26:
-#line 145 "compiler/parser.y"
+#line 150 "compiler/parser.y"
     {
-                reaction r((yyvsp[(5) - (7)].fval));
-                r.s1 =inst.getEspece((yyvsp[(1) - (7)].texte));
-                r.setp1(inst.getEspece((yyvsp[(3) - (7)].texte)));
+                reaction r((yyvsp[(7) - (9)].fval),1);
+                r.S1=inst.getEspece((yyvsp[(1) - (9)].texte));
+                r.S2=inst.getEspece((yyvsp[(3) - (9)].texte));
+                espece* p1=inst.getEspece((yyvsp[(5) - (9)].texte));
+                r.setProd(p1,1);
                 inst.addReaction(r);
+
 ;}
     break;
 
   case 27:
-#line 153 "compiler/parser.y"
+#line 161 "compiler/parser.y"
     {
-                reaction r((yyvsp[(7) - (9)].fval));
-                r.s1=inst.getEspece((yyvsp[(1) - (9)].texte));
-                r.setp1(inst.getEspece((yyvsp[(3) - (9)].texte)));
-                r.setp2(inst.getEspece((yyvsp[(5) - (9)].texte)));
+                reaction r((yyvsp[(7) - (9)].fval),2);
+                espece* s1=inst.getEspece((yyvsp[(1) - (9)].texte));
+                r.S1=s1;
+                espece* p1=inst.getEspece((yyvsp[(3) - (9)].texte));
+                r.setProd(p1,1);
+                espece* p2=inst.getEspece((yyvsp[(5) - (9)].texte));
+                r.setProd(p1,2);
                 inst.addReaction(r);
+                
 ;}
     break;
 
   case 28:
-#line 162 "compiler/parser.y"
+#line 176 "compiler/parser.y"
     {
-                reaction r((yyvsp[(9) - (11)].fval));
-                r.s1=inst.getEspece((yyvsp[(1) - (11)].texte));
-                r.s2=inst.getEspece((yyvsp[(3) - (11)].texte));
-                r.setp1(inst.getEspece((yyvsp[(5) - (11)].texte)));
-                r.setp2(inst.getEspece((yyvsp[(7) - (11)].texte)));
+                reaction r((yyvsp[(9) - (11)].fval),3);
+                espece* s1=inst.getEspece((yyvsp[(1) - (11)].texte));
+                r.S1=s1;
+                espece* s2=inst.getEspece((yyvsp[(3) - (11)].texte));
+                r.S2=s2;
+                espece* p1=inst.getEspece((yyvsp[(5) - (11)].texte));
+                r.setProd(p1,1);
+                espece* p2=inst.getEspece((yyvsp[(7) - (11)].texte));
+                r.setProd(p2,2);
                 inst.addReaction(r);
+
+                
 ;}
     break;
 
 
 /* Line 1267 of yacc.c.  */
-#line 1503 "compiler/parser.cc"
+#line 1517 "compiler/parser.cc"
       default: break;
     }
   YY_SYMBOL_PRINT ("-> $$ =", yyr1[yyn], &yyval, &yyloc);
@@ -1713,7 +1727,7 @@ yyreturn:
 }
 
 
-#line 172 "compiler/parser.y"
+#line 192 "compiler/parser.y"
 
 
 

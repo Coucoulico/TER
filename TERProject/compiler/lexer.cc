@@ -768,7 +768,7 @@ YY_RULE_SETUP
 case 2:
 YY_RULE_SETUP
 #line 28 "compiler/lexer.l"
-{}
+{ }
 	YY_BREAK
 case 3:
 YY_RULE_SETUP
@@ -861,7 +861,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 20:
 YY_RULE_SETUP
-#line 70 "compiler/lexer.l"
+#line 69 "compiler/lexer.l"
 ECHO;
 	YY_BREAK
 #line 868 "compiler/lexer.cc"
@@ -1861,7 +1861,7 @@ void yyfree (void * ptr )
 
 #define YYTABLES_NAME "yytables"
 
-#line 70 "compiler/lexer.l"
+#line 69 "compiler/lexer.l"
 
 
 

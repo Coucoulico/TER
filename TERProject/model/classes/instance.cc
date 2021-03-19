@@ -26,33 +26,16 @@ void instance::addEspece(espece e){
   }
 
 void instance::addReaction(const reaction& r){
+  std::cout <<"add react"<<std::endl;
 	if(find(reactions.begin(),reactions.end(),r) == reactions.end() ){
   		reactions.push_back(r);
+      std::cout <<"bien ajouté";
   	}
   	else{
   		std::cout << r << "recation  deja declaré";
   	}
 
 }
-
-
- void instance::addReactif(reaction &r,const espece &e) const {
- 	if(find(especes.begin(),especes.end(),e) == especes.end() ){
- 		std::cout <<e <<" utilisé mais pas declaré !"; 
- 	}
- 	else{
- 		r.addReactif(e);
- 	}
- }
-   
- void instance::addProduit(reaction &r,const espece& p) const{
-    	if(find(especes.begin(),especes.end(),p) == especes.end() ){
- 		std::cout <<p <<" utilisé mais pas declaré !"; 
- 	}
- 	else{
- 		r.addProduit(p);
- 	}
-  }
 
   espece* instance::getEspece(std::string id){
     for(espece& e:especes){

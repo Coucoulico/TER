@@ -25,7 +25,7 @@ comment		\/\/.*
 %%
 {line} 			{ }
 
-{comment}      	{}
+{comment}      	{ }
 
 "vesicule"		{return (VESICULE);}
 
@@ -64,7 +64,6 @@ comment		\/\/.*
 {cf}    		{  return(CF); }
 
 {ident}         {  yylval.texte = strdup(yytext); return(IDENT);  }
-
 
 
 %%

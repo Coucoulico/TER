@@ -10,7 +10,6 @@ extern "C" FILE *yyin;
 extern instance inst;
 
 int main(int argc, char *argv[]) {
-     
     if (argc!= 2) {
         std::cout <<"Usage: <command> filename"<<std::endl;
         return 1;
@@ -29,4 +28,8 @@ int main(int argc, char *argv[]) {
     } while (!feof(yyin));
 
     std::cout << inst <<std::endl;
+   
+
+
+
 }

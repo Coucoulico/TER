@@ -1,4 +1,3 @@
-
 //
 //  Exemple de modèle à simuler
 //
@@ -23,3 +22,4 @@ init (s) = 1000;      // 1000 exemplaires de s au début.
 E + s -> Es    [0.5];
 Es    -> E + s [0.01];
 Es    -> E + p [0.005];
+p + s -> Es [0.4];

@@ -37,10 +37,11 @@ void yyerror(char *s);
 %type<texte>            Taille
 %type<texte>            Vitesse
 %type<texte>            Init
+%type<texte>            React0
 %type<texte>            React1
 %type<texte>            React2
 %type<texte>            React3
-%type<texte>            React4
+
 
 //Symboles terminaux qui seront fournis par yylex()
 
@@ -62,8 +63,9 @@ void yyerror(char *s);
 %token VITESSE
 %token INIT
 
+
 %%
-Prog:           Vesicule Lespece Lrest Lreact 
+Prog:           Vesicule Lespece Lrest Lreact  
     ;
 
 Lespece:        Espece 
@@ -128,44 +130,62 @@ Lreact:     React
 
 React:      Reacttype      
     ;
-Reacttype:  React1
+Reacttype:  React0
+    |       React1
     |       React2
     |       React3
-    |       React4
     ;
-React1:         IDENT PLUS IDENT IMPLIZE IDENT CO FLOAT CF PV{
-                reaction r($7);
-                r.s1=inst.getEspece($1);
-                r.s2=inst.getEspece($3);
-                r.setp1(inst.getEspece($5));
-                inst.addReaction(r);
-}
-;
 
-React2:         IDENT IMPLIZE IDENT CO FLOAT CF PV {
-                reaction r($5);
-                r.s1 =inst.getEspece($1);
-                r.setp1(inst.getEspece($3));
+
+React0:         IDENT IMPLIZE IDENT CO FLOAT CF PV {
+                reaction r($5,0);
+                r.S1 = inst.getEspece($1);
+                r.setProd(inst.getEspece($3),1);
                 inst.addReaction(r);
+
+                
 }          
     ;
 
-React3:         IDENT IMPLIZE IDENT PLUS IDENT CO FLOAT CF PV {
-                reaction r($7);
-                r.s1=inst.getEspece($1);
-                r.setp1(inst.getEspece($3));
-                r.setp2(inst.getEspece($5));
+React1:         IDENT PLUS IDENT IMPLIZE IDENT CO FLOAT CF PV{
+                reaction r($7,1);
+                r.S1=inst.getEspece($1);
+                r.S2=inst.getEspece($3);
+                espece* p1=inst.getEspece($5);
+                r.setProd(p1,1);
                 inst.addReaction(r);
+
+}
+;
+
+React2:         IDENT IMPLIZE IDENT PLUS IDENT CO FLOAT CF PV {
+                reaction r($7,2);
+                espece* s1=inst.getEspece($1);
+                r.S1=s1;
+                espece* p1=inst.getEspece($3);
+                r.setProd(p1,1);
+                espece* p2=inst.getEspece($5);
+                r.setProd(p1,2);
+                inst.addReaction(r);
+                
 }  
     ;
 
-React4:         IDENT PLUS IDENT IMPLIZE IDENT PLUS IDENT CO FLOAT CF PV {
-                reaction r($9);
-                r.s1=inst.getEspece($1);
-                r.s2=inst.getEspece($3);
-                r.setp1(inst.getEspece($5));
-                r.setp2(inst.getEspece($7));
+
+
+React3:         IDENT PLUS IDENT IMPLIZE IDENT PLUS IDENT CO FLOAT CF PV {
+                reaction r($9,3);
+                espece* s1=inst.getEspece($1);
+                r.S1=s1;
+                espece* s2=inst.getEspece($3);
+                r.S2=s2;
+                espece* p1=inst.getEspece($5);
+                r.setProd(p1,1);
+                espece* p2=inst.getEspece($7);
+                r.setProd(p2,2);
                 inst.addReaction(r);
+
+                
 }
     ;
 
