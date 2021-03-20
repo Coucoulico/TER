@@ -29,8 +29,10 @@ int main(int argc, char *argv[]) {
     } while (!feof(yyin));
 
     std::cout << inst <<std::endl;
+    //pcsolver s(inst);
+    //s.solve(100000);
     pcsolver s(inst);
-    s.solve(1000);
+    s.solve(10);
    
 
 

@@ -5,7 +5,7 @@
 vesicule::vesicule(){};
 vesicule::vesicule(const int &d):diamettre(d){};
 void vesicule::setDiamettre(const int &d){
-	diamettre=d;
+	diamettre=d;//en nano
 };
 
 std::ostream& operator<<(std::ostream& os, const vesicule& v){
@@ -14,5 +14,6 @@ std::ostream& operator<<(std::ostream& os, const vesicule& v){
 	}
 
 float vesicule::volume() const{
-	return 4/3 * M_PI * pow(diamettre/2,3);
+	float d_umcube=diamettre * pow(10,-3);
+	return 4 * M_PI * pow(d_umcube/2,3) / 3;
 }

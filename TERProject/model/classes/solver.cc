@@ -6,7 +6,7 @@
 
 solver::solver(instance inst){
 	i=inst;
-	alpha=0.00000074;
+	alpha = 7.4 * pow(10,-7);
 }
 
 
@@ -22,20 +22,23 @@ pcsolver::pcsolver(instance inst):solver(inst){};
 void pcsolver::solve(int max_time)  {
 	
 	int time=0;
-	while(time <max_time){
-		i.affichage();
+	while(time < max_time){
+		//i.affichage();
 		//choose reaction randomly
 		int reaction_index = rand() % i.reactions.size();
 		//getting the reaction
 		reaction r = i.reactions[reaction_index];
+		
 		//number of collision
 		float n=r.collision(alpha,i.vesi.volume());
-
+		
+		
+		
 		//applying the reaction
-		int t=n;
+		r.apply(n);
+		std::cout <<"S1 : "<<*r.S1;
+		std::cout <<"P1 : "<<*r.P1;
 
-		std::cout << "t : " <<t;
-		r.apply(t);
 
 		//getting fraction n
 		float frac=n-((int)n);
