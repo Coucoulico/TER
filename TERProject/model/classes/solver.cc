@@ -2,6 +2,7 @@
 #include "../headers/instance.h"
 #include <stdlib.h>
 #include <random>
+#include <vector>
 
 
 solver::solver(instance inst){
@@ -26,18 +27,16 @@ void pcsolver::solve(int max_time)  {
 		//i.affichage();
 		//choose reaction randomly
 		int reaction_index = rand() % i.reactions.size();
-		//getting the reaction
-		reaction r = i.reactions[reaction_index];
+		
 		
 		//number of collision
-		float n=r.collision(alpha,i.vesi.volume());
+		float n=i.reactions[reaction_index].collision(alpha,i.vesi.volume());
 		
 		
 		
 		//applying the reaction
-		r.apply(n);
-		std::cout <<"S1 : "<<*r.S1;
-		std::cout <<"P1 : "<<*r.P1;
+		
+		i.reactions[reaction_index].apply(n);
 
 
 		//getting fraction n
@@ -45,8 +44,9 @@ void pcsolver::solve(int max_time)  {
 
 		//
 		if (solver::rand_uniforme()<frac){
-			r.apply(1);
+			i.reactions[reaction_index].apply(1);
 		}
+		std::cout << i;
 		time++;
 	}
 

@@ -46,40 +46,41 @@ float reaction::collision(float alpha,float vol){
 	}
 }
 
-void reaction::apply(int n){
+void reaction::apply(const int& n){
 	if(n > 0){
 		switch (type){
 			case 0:{
-				S1->nb -= 4;
-				P1->nb += 4;
+				S1->nb -= n;
+				(*P1).nb += n;
 
 				break;
 			}
 
 			case 1:{
-				S1->nb -= 4;
-				P1->nb += 4;
-				(*S2).nb -= 4;
+				S1->nb -= n;
+				P1->nb += n;
+				(*S2).nb -= n;
+				
 				break;
 			}
 			case 2:{
-				S1->nb -= 4;
-				P1->nb += 4;
-				(*P2).nb += 4;
+				S1->nb -= n;
+				P1->nb += n;
+				(*P2).nb += n;
 				break;
 			}
 			case 3:{
-				S1->nb -= 4;
-				P1->nb += 4;
-				(*S2).nb -= 4;
-				(*P2).nb += 4;
+				S1->nb -= n;
+				P1->nb += n;
+				(*S2).nb -= n;
+				(*P2).nb += n;
 				break;
 			}
 			default:
 				std::cout << "impossible type inconnu"<<std::endl;
 
 		}
-		std::cout << "S1 : "<< *S1;
+		
 	}
 }
 

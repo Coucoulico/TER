@@ -18,7 +18,7 @@ public:
 
 	float collision(float alpha,float vol);
 
-	void apply(int time);
+	void apply(const int& time);
 
 	int type;
 	float proba;
