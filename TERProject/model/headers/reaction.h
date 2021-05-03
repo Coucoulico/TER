@@ -3,6 +3,7 @@
 #define REACTION_H
 
 #include "espece.h"
+#include "molecule.h"
 
 class reaction
 {
@@ -18,7 +19,8 @@ public:
 
 	float collision(float alpha,float vol);
 
-	void apply(const int& time);
+	//pour les deuxieme solveur
+	bool make_collision(molecule* m1,molecule* m2);
 
 	int type;
 	float proba;

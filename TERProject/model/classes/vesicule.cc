@@ -14,6 +14,7 @@ std::ostream& operator<<(std::ostream& os, const vesicule& v){
 	}
 
 float vesicule::volume() const{
-	float d_umcube=diamettre * pow(10,-3);
-	return 4 * M_PI * pow(d_umcube/2,3) / 3;
+	float r=diamettre /2000.;
+
+	return 4. *r*r*r * M_PI / 3;
 }

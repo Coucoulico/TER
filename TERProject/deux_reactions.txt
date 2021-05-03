@@ -1,0 +1,43 @@
+//
+//  Exemple de modèle à simuler
+//
+
+vesicule = 500;       // 500 nanomètres de diamètre
+
+espece E, Es, s, p;   // espèces biochimiques
+espece F, Fp, q;      // suite des espèces biochimiques
+taille (E) = 8;       // 8 nanomètres de diamètre.
+taille (Es) = 8;      // 8 nanomètres de diamètre.
+taille (s) = 2;       // 2 nanomètres de diamètre.
+taille (p) = 2;       // 2 nanomètres de diamètre.
+
+taille (F) = 6;       // 6 nanomètres de diamètre.
+taille (Fp) = 6;      // 6 nanomètres de diamètre.
+taille (q) = 2;       // 2 nanomètres de diamètre.
+
+vitesse (E) = 0.1;    // faible vitesse de diffusion.
+vitesse (Es) = 0.1;
+
+vitesse (F) = 0.1;    // faible vitesse de diffusion.
+vitesse (Fp) = 0.1;
+
+init (E) = 50;        // 50 exemplaires de E
+init (F) = 50;        // et 50 exemplaires de F au début.
+init (s) = 1000;      // 1000 exemplaires de s au début.
+
+// réactions.
+
+// première réaction enzymatique E: s -> p
+E + s -> Es    [0.5];
+Es    -> E + s [0.01];
+Es    -> E + p [0.005];
+
+// deuxième réaction enzymatique F: p -> q
+
+// les courbes "deux-reactions-1.png" correspondent à p1 = 0.3, p2 = 0.01, p3 = 0.001.
+
+// les courbes "deux-reactions-2.png" correspondent à p1 = 0.9, p2 = 0.001, p3 = 0.001.
+
+F + p -> Fp    [0.3];
+Fp    -> F + p [0.01];
+Fp    -> F + q [0.001];
